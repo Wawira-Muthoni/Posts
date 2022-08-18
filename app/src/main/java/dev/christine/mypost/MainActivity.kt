@@ -3,6 +3,7 @@ package dev.christine.mypost
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import dev.christine.mypost.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,10 +28,11 @@ class MainActivity : AppCompatActivity() {
                     val posts = response.body()
                     Toast.makeText(baseContext,"fetched ${posts!!.size}posts",
                     Toast.LENGTH_LONG).show()
+//
+//                    var postAdapter = PostAdapter(baseContext,Posts)
+//                     binding.rvRetrofit= layoutInflater.LinearLayoutManager(baseContext)
+//                    binding.rvRetrofit.adapter = dev.christine.mypost.PostAdapter
 
-                    var PostAdapter = PostAdapter(baseContext,Posts)
-                     binding.rvRetrofit= layoutInflater.LinearLayoutManager(baseContext)
-                    binding.rvRetrofit.adapter = dev.christine.mypost.PostAdapter
                 }
             }
 
@@ -39,6 +41,11 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+    }
+    fun displayPosts(postsList: List<Posts>){
+        binding.rvPosts.layoutManager=LinearLayoutManager(this)
+        var PostAdapter=PostsRecylerView(postsList)
+//        binding.rvPosts.adapter=PostAdapter
     }
 
 }

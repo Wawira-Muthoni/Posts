@@ -30,7 +30,7 @@ class CommentActivity : AppCompatActivity() {
                var posts = response.body()
                 if (posts!= null){
                     binding.tvTitle.text = Posts.Title
-                   binding.tvBody.text = Posts.
+                   binding.tvBody.text = Posts.body
                 }
             }
 //            var postId:Int,
